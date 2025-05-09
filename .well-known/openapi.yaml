@@ -1,18 +1,28 @@
 openapi: 3.0.1
 info:
   title: D20 Roll Plugin
-  description: Roll a 20-sided die from an external oracle.
-  version: '1.0.0'
+  description: Roll any die from an external oracle using the 'sides' parameter.
+  version: '1.1.0'
 servers:
   - url: https://dmb-rolld20.netlify.app
 paths:
   /.netlify/functions/roll-d20:
     get:
-      operationId: getD20Roll
-      summary: Roll a d20
+      operationId: getDiceRoll
+      summary: Roll a custom die (d4, d6, d20, etc.)
+      parameters:
+        - name: sides
+          in: query
+          required: false
+          description: Number of sides on the die (e.g., 4, 6, 20). Defaults to 20.
+          schema:
+            type: integer
+            minimum: 2
+            maximum: 100
+            example: 20
       responses:
         '200':
-          description: A random d20 roll result
+          description: A random die roll result
           content:
             application/json:
               schema:
@@ -21,3 +31,8 @@ paths:
                   roll:
                     type: integer
                     example: 17
+                  sides:
+                    type: integer
+                    example: 20
+        '400':
+          description: Invalid input (e.g. sides too low/high or missing)

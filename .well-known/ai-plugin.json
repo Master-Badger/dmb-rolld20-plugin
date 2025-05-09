@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "D20 Roller",
+  "name_for_model": "d20_roll",
+  "description_for_human": "Rolls a d20 using the Bureau-sanctioned external oracle.",
+  "description_for_model": "Use this plugin to roll a 20-sided die.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://dmb-rolld20.netlify.app/.well-known/openapi.yaml"
+  },
+  "logo_url": "https://dmb-rolld20.netlify.app/logo.png",
+  "contact_email": "your@email.com",
+  "legal_info_url": "https://dmb-rolld20.netlify.app/legal"
+}

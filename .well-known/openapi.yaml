@@ -1,0 +1,23 @@
+openapi: 3.0.1
+info:
+  title: D20 Roll Plugin
+  description: Roll a 20-sided die from an external oracle.
+  version: '1.0.0'
+servers:
+  - url: https://dmb-rolld20.netlify.app
+paths:
+  /.netlify/functions/roll-d20:
+    get:
+      operationId: getD20Roll
+      summary: Roll a d20
+      responses:
+        '200':
+          description: A random d20 roll result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  roll:
+                    type: integer
+                    example: 17
